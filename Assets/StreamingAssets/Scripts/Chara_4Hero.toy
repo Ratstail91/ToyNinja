@@ -1,0 +1,16 @@
+import "Unity";
+
+const character = Unity.FetchGameObject("Chara_4Hero");
+
+var horizontalMovement = 0;
+var verticalMovement = 0;
+
+character.Behaviour.Update = () => {
+	horizontalMovement = Unity.GetAxis("Horizontal");
+	verticalMovement = Unity.GetAxis("Vertical");
+};
+
+character.Behaviour.FixedUpdate = () => {
+	character.Rigidbody.RotationY += horizontalMovement;
+	character.Rigidbody.PositionZ += verticalMovement * 0.1;
+};
