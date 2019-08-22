@@ -4,13 +4,23 @@ const character = Unity.FetchGameObject("Chara_4Hero");
 
 var horizontalMovement = 0;
 var verticalMovement = 0;
+var attack = false;
 
 character.Behaviour.Update = () => {
 	horizontalMovement = Unity.GetAxis("Horizontal");
 	verticalMovement = Unity.GetAxis("Vertical");
+
+	if (Unity.GetButtonDown("Fire1")) {
+		attack = true;
+	}
 };
 
 character.Behaviour.FixedUpdate = () => {
 	character.Rigidbody.RotationY += horizontalMovement;
 	character.Rigidbody.PositionZ += verticalMovement * 0.1;
+
+	character.Animator.SetBool("IsRun", verticalMovement != 0);
+
+	character.Animator.SetBool("IsJump", attack);
+	attack = false;
 };
