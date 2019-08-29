@@ -19,6 +19,14 @@ character.Behaviour.FixedUpdate = () => {
 	character.Rigidbody.RotationY += horizontalMovement;
 	character.Rigidbody.PositionZ += verticalMovement * 0.1;
 
+	//bugfix
+	character.Rigidbody.VelocityX = 0;
+	character.Rigidbody.VelocityY = 0;
+	character.Rigidbody.VelocityZ = 0;
+	character.Rigidbody.AngularVelocityX = 0;
+	character.Rigidbody.AngularVelocityY = 0;
+	character.Rigidbody.AngularVelocityZ = 0;
+
 	character.Animator.SetBool("IsRun", verticalMovement != 0);
 
 	character.Animator.SetBool("IsJump", attack);
