@@ -1,12 +1,10 @@
 import "Unity";
 
-const character = Unity.FetchGameObject("Chara_4Hero");
-
 var horizontalMovement = 0;
 var verticalMovement = 0;
 var attack = false;
 
-character.Behaviour.Update = () => {
+this.Behaviour.Update = () => {
 	horizontalMovement = Unity.GetAxis("Horizontal");
 	verticalMovement = Unity.GetAxis("Vertical");
 
@@ -15,20 +13,20 @@ character.Behaviour.Update = () => {
 	}
 };
 
-character.Behaviour.FixedUpdate = () => {
-	character.Rigidbody.RotationY += horizontalMovement;
-	character.Rigidbody.PositionZ += verticalMovement * 0.1;
+this.Behaviour.FixedUpdate = () => {
+	this.Rigidbody.RotationY += horizontalMovement;
+	this.Rigidbody.PositionZ += verticalMovement * 0.1;
 
 	//bugfix
-	character.Rigidbody.VelocityX = 0;
-	character.Rigidbody.VelocityY = 0;
-	character.Rigidbody.VelocityZ = 0;
-	character.Rigidbody.AngularVelocityX = 0;
-	character.Rigidbody.AngularVelocityY = 0;
-	character.Rigidbody.AngularVelocityZ = 0;
+	this.Rigidbody.VelocityX = 0;
+	this.Rigidbody.VelocityY = 0;
+	this.Rigidbody.VelocityZ = 0;
+	this.Rigidbody.AngularVelocityX = 0;
+	this.Rigidbody.AngularVelocityY = 0;
+	this.Rigidbody.AngularVelocityZ = 0;
 
-	character.Animator.SetBool("IsRun", verticalMovement != 0);
+	this.Animator.SetBool("IsRun", verticalMovement != 0);
 
-	character.Animator.SetBool("IsJump", attack);
+	this.Animator.SetBool("IsJump", attack);
 	attack = false;
 };

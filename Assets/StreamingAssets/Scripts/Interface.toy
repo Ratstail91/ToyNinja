@@ -1,0 +1,6 @@
+import "Standard";
+
+var score = 0;
+
+this.TextMesh.SetText("Score: " + ToString(score));
+
