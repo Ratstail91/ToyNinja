@@ -1,0 +1,5 @@
+import "Unity";
+
+var interface = Unity.FetchGameObject("Score Text");
+
+interface.TextMesh.SetText("Hello from TestBug.toy!");
