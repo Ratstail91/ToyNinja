@@ -1,4 +1,5 @@
 import "Unity";
+import "Globals";
 
 var horizontalMovement = 0;
 var verticalMovement = 0;
@@ -26,6 +27,10 @@ this.Behaviour.FixedUpdate = () => {
 	this.Rigidbody.AngularVelocityZ = 0;
 
 	this.Animator.SetBool("IsRun", verticalMovement != 0);
+
+	if (attack) {
+		Globals["score"] = Globals["score"] + 1;
+	}
 
 	this.Animator.SetBool("IsJump", attack);
 	attack = false;

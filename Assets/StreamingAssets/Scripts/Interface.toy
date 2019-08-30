@@ -1,7 +1,9 @@
 import "Standard";
+import "Globals";
 
-var score = 0;
+Globals["score"] = 0;
 
-this.TextMesh.SetText("Score: " + ToString(score));
-
-import "Scripts/TestBug.toy";
+this.Behaviour.Update = () => {
+	//This script must be called from ToyBehaviour, otherwise "Globals" won't be saved into ToyBehaviour's environment
+	this.TextMesh.SetText("Score: " + ToString( Globals["score"] ));
+};

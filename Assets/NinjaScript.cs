@@ -12,7 +12,9 @@ public class NinjaScript : MonoBehaviour {
 	void Update() {
 		if (Input.GetKey("p")) {
 			//run arbitrary code at runtime
-			behaviour.Run("print \"Hello world\";");
+			Toy.Plugin.Globals globals = new Toy.Plugin.Globals();
+
+			Debug.Log(globals.Get("score"));
 		}
 	}
 }
